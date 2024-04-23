@@ -1,0 +1,59 @@
+.headWithIcon {
+    background: #249AC8;
+    color: #ffffff;
+    /* margin-bottom: 10px; */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.headWithIcon img {
+    padding: 5px;
+    width: 50px;
+}
+
+.calcBg {
+    background-color: rgba(154, 206, 235, 0.18);
+    border: 1px solid rgb(36, 154, 200);
+    margin: 0;    
+}
+
+.calcInpDiv {
+    background-color: #ffffff;
+    padding-right: 0;
+    border-right: 1px solid rgba(36, 154, 200, 1);
+}
+
+@media (min-width: 768px)
+{
+    .calcInpDiv {
+        border-right: 1px solid rgba(36, 154, 200, 1);
+    }
+    .calcBg {
+        display: flex;
+    }
+}
+
+@media (max-width: 800px)
+{
+    .calcInpDiv {
+        border-bottom: 1px solid rgba(36, 154, 200, 1);
+    }
+}
+
+.calcChartDiv {
+    padding-left: 0;
+    align-content: center;
+}
+
+.resultText {
+    color: #249AC8;
+}
+
+.clor-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.highcharts-container {
+    height: 350px !important; /* Adjust the height as needed */
+}

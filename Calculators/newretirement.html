@@ -1,0 +1,338 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" type="text/css" />
+    <link rel="stylesheet" href="formcss.css" type="text/css" />
+    <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/jquery.mobile-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />  
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <script type="text/javascript" src="js/export-data.js"></script>
+    <script type="text/javascript" src="js/accessibility.js"></script>
+    <script type="text/javascript">
+        var shortfall;
+        var provision;
+        function Calculate() {
+            
+            var Age = document.getElementById("Age").value;
+            var RAge = document.getElementById("RAge").value;
+            var PV = document.getElementById("PV").value;
+            var Expense = document.getElementById("Expense").value;
+            var Maturity = document.getElementById("Maturity").value;
+            var Yearsleft;
+            Yearsleft = (RAge - Age);
+            var Yearsafter;
+            Yearsafter = (85 - RAge);
+            var Power = Math.pow((1 + (9 / 100)), Yearsleft);
+            var Powerr = Math.pow(1.0075, (Yearsleft * 12));
+            var AExpenses;
+            AExpenses = (Number(Expense) * 12);
+            var FVExpenses;
+            FVExpenses = Math.round(AExpenses * Power);
+            var Power2 = Math.pow((1 + (1.42 / 100)), (-Yearsafter));
+            var RHS;
+            RHS = [(1 - Power2) * 100] / (1.42);
+            var Existing;
+            Existing = Math.round(Number(PV) * Power);
+
+            var corpus;
+            corpus = Math.round((FVExpenses * RHS));
+            provision = (Number(Existing) + Number(Maturity));
+
+            shortfall = (corpus - provision);
+
+            var MonthlySIP;
+            MonthlySIP = Math.round([(shortfall * (0.0075)) / (Powerr - 1)] * 1.0075);
+
+            document.getElementById('Provision_display').innerHTML=numberWithCommas(Existing);
+            document.getElementById('corpus_display').innerHTML=numberWithCommas(corpus);
+            document.getElementById('MonthlySIP_display').innerHTML=numberWithCommas(MonthlySIP);
+
+            drawChart(shortfall, provision)
+
+        }
+
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(function () {
+            drawChart(shortfall, provision);
+        });
+        function drawChart(shortfall, provision) {
+
+            /*var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Shortfall', parseInt(shortfall)],
+                ['Provision Made', parseInt(provision)],
+            ]);
+
+            var options = {
+                title: 'Retirement Planning',
+                pieHole: 0.4,
+                slices: {
+                    0: { color: '#2199c7' }, // Color for Shortfall
+                    1: { color: '#ee141f' }, // Color for Provision
+                },
+                pieSliceText: 'percentage',
+                tooltip: {
+                text: 'value'
+                },
+                chartArea: {
+                    width: '100%',
+                    height: '94%'
+                },
+                legend: {
+                    textStyle: {
+                        fontSize: 13
+                    }
+                }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);*/
+
+            var data = [
+                ['Shortfall', parseInt(shortfall)],
+                ['Provision Made', parseInt(provision)]
+            ];
+
+            Highcharts.chart('piechart', {
+                chart: {
+                    type: 'pie',
+                    backgroundColor: 'rgba(154, 206, 235, 0.01)'
+                },
+                title: {
+                    text: ''
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: '80%', // Make it a donut chart
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    },
+                    /*series: {
+                        borderWidth: 0,
+                        colorByPoint: true,
+                        type: 'pie',
+                        size: '80%',
+                        innerSize: '80%',
+                        dataLabels: {
+                            enabled: true,
+                            crop: false,
+                            distance: '-10%',
+                            style: {
+                                fontWeight: 'bold',
+                                fontSize: '10px'
+                            },
+                            connectorWidth: 0
+                        }
+                    }*/
+                },
+                colors: ['#ff6984', '#56e8cb'],
+                series: [{
+                    name: 'Value',
+                    colorByPoint: true,
+                    data: data
+                }],
+                // Disable the context menu
+                exporting: {
+                    enabled: false
+                },
+                // Disable the Highcharts.com link
+                credits: {
+                    enabled: false
+                }
+            });
+        }
+
+        function Nextpage() {
+            if (document.getElementById('hide2').style.display == 'none') {
+                document.getElementById('hide2').style.display = 'block';
+            }
+            if (document.getElementById('hide').style.display == 'block') {
+                document.getElementById('hide').style.display = 'none';
+            }
+        }
+
+        function Nextpage2() {
+            if (document.getElementById('benefits').style.display == 'none') {
+                document.getElementById('benefits').style.display = 'block';
+            }
+            if (document.getElementById('hide2').style.display == 'block') {
+                document.getElementById('hide2').style.display = 'none';
+            }
+        }
+
+        function backpage() {
+            if (document.getElementById('hide').style.display == 'none') {
+                document.getElementById('hide').style.display = 'block';
+            }
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+
+        function backpage2() {
+            if (document.getElementById('hide2').style.display == 'none') {
+                document.getElementById('hide2').style.display = 'block';
+            }
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+        function backpage33() {
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12" align="center" style="padding: 10px; font-size: 18px;">
+            <img src="../img/Colorretirement.svg" alt="fb-logo" class="clor-icon"> Retirement Planning Calculator
+        </div>
+    </div>
+    <div id="printDiv" class="row nomargin calcBg">
+       <div class="col-md-6 col-sm-6 col-xs-12 nopadding calcInpDiv">
+            <div id="hide" style="display:block;">
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">What is your current Age ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Age" value="25" min="18" max="100" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">At what age do you wish to retire ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="RAge" value="55" min="50" max="70" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">If you were to retire today, approximately how much amount do you
+                            think you
+                            would require monthly to live comfortably ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Expense" value="25000" min="15000" max="500000"
+                            step="1000" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">What benefits, including Provident Fund, will you receive when you
+                            retire
+                            ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Maturity" value="500000" min="100000"
+                            max="10000000" step="100000" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">How much money have you saved for your life after retirement
+                            ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="PV" value="200000" min="100000" max="10000000"
+                            step="1" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <!-- <div class="clearfix"></div>
+                <div class="col-md-12 nopadding resp_1080">
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 res_480_cal_hou">
+                        <input type='submit' value='Calculate' class='form_button' onclick="Calculate()">
+                    </div>
+                </div> -->
+            </div>
+
+            <div id="hide2" class="col-md-9 col-xs-12" style="display:none;">
+                <span id='phpfmg_processing' style='display:none;'>
+                    <img id='phpfmg_processing_gif' src='admin1500.gif?mod=image&amp;func=processing' border=0
+                        alt='Processing...'> <label id='phpfmg_processing_dots'></label>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 nopadding calcChartDiv">
+            <div id="benefits" style="display:block;">
+                <div class="row nomargin">
+                    <div class="col-md-12 result_bar">
+                        <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Provision Made :</label>
+                                   </div>	
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="Provision_display"></span>
+                                </div>	
+                            </div>
+                            <hr color="#C1C1C1" />
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Retirement Corpus :</label>
+                                   </div>	
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="corpus_display"></span>
+                                </div>	
+                            </div>
+                            <hr color="#C1C1C1" />
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Monthly Savings :</label>
+                                   </div>	
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="MonthlySIP_display"></span>
+                                </div>	
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 nopadding pie_resp_600">
+                            <div id="piechart" class="piechart"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="clearfix"></div>
+                    <div class="col-md-12 nopadding">
+                        <div class="button result_back_btn res_480_back_btn" onclick="backpage()">Back</div>
+                    </div> -->
+                </div>
+                <!-- <div class="row nomargin">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6" align="right" style="padding: 0 25px 10px 0">
+                        <a onclick="window.location.reload()">Reset Calculator</a>
+                    </div>                    
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", Calculate);
+    </script>
+    <script src="formjs.js" type="text/javascript"></script>
+</body>
+
+</html>

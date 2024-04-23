@@ -1,0 +1,122 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" type="text/css" />
+    <link rel="stylesheet" href="formcss.css" type="text/css" />
+    <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/jquery.mobile-1.4.1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />  
+    <script type="text/javascript">
+        function Calculate() {
+            var Returnn = document.getElementById("Return").value;
+            var Years = document.getElementById("Years").value;
+            var PV = document.getElementById("PV").value;
+            var convertmonthly;
+            convertmonthly = Number(Returnn);
+            var Return = Number(convertmonthly / 100);
+            var Power = Math.pow((1 + Return), Years);
+
+            Total = Math.round(PV * Power);
+            document.getElementById('v1-five').innerHTML = numberWithCommas(Total);
+        }
+
+        function defaultpage() {
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+
+            if (document.getElementById('hide').style.display == 'none') {
+                document.getElementById('hide').style.display = 'block';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12" align="center" style="padding: 10px; font-size: 18px;">
+            <img src="../img/colorFV.svg" alt="fb-logo" class="clor-icon"> Future Value Calculator
+        </div>
+    </div>
+    <div id="printDiv" class="row nomargin calcBg">
+        <div class="col-md-6 col-sm-6 col-xs-12 nopadding calcInpDiv">
+            <div id="hide" style="display:block;">
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill"> Investment Amount (&#8377;)</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="PV" value="5000" min="1000" max="10000000"
+                            step="1000" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">Expected Interest Rate (%)</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Return" value="10" min="1" max="15" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">Duration(Years)</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Years" value="5" min="1" max="30" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <!-- <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <div class="button" onclick="Calculate()">Calculate</div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-6"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 nopadding calcChartDiv">
+            <div id="benefits" style="display:block;">
+                <div class="row nomargin">
+                    <div class="col-md-12 result_bar">
+                        <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>You will Accumulate :</label>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377;<span id="v1-five"></span>
+                                </div>
+                            </div>
+                            <hr color="#C1C1C1" />
+                        </div>
+                    </div>
+                    <!-- <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="button" onclick="defaultpage()">Back</div>
+                </div> -->
+                </div>
+                <!-- <div class="row nomargin">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6" align="right" style="padding: 0 25px 10px 0">
+                        <a onclick="window.location.reload()">Reset Calculator</a>
+                    </div>                    
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", Calculate);
+    </script>
+    <script src="formjs.js" type="text/javascript"></script>
+</body>
+
+</html>

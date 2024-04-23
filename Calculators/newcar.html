@@ -1,0 +1,383 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" type="text/css" />
+    <link rel="stylesheet" href="formcss.css" type="text/css" />
+    <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/jquery.mobile-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />  
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <script type="text/javascript" src="js/export-data.js"></script>
+    <script type="text/javascript" src="js/accessibility.js"></script>
+    <script type="text/javascript">
+        var FV;
+        var FVexisting;
+        function Calculate() {
+            var Years = document.getElementById("Years").value;
+            var Cost = document.getElementById("Cost").value;
+            var PV = document.getElementById("PV").value;
+            var inflation = document.getElementById("inflation").value;
+            var ror = document.getElementById("ror").value;
+
+            var Percentage = document.getElementById("Percentage").value;
+            var Power = Math.pow((1 + (ror / 100)), Years);
+            var hike = Math.pow((1 + (inflation / 100)), Years);
+            var rounding = (ror / 1200);
+            var Powerr = Math.pow((1 + rounding), Years * 12);
+
+            var CostFV;
+            CostFV = Math.round((Cost * hike));
+
+            var downpayment;
+            downpayment = CostFV * (1 - (Percentage / 100));
+
+            var down;
+            down = Math.round(CostFV * (Percentage / 100));
+
+            FVexisting = Math.round(PV * Power);
+
+            FV = (downpayment - FVexisting);
+
+            var SIP;
+            SIP = Math.round([(FV * rounding) / (Powerr - 1)]);
+
+            document.getElementById('Cost_display').innerHTML=numberWithCommas(CostFV);
+            document.getElementById('down_display').innerHTML=numberWithCommas(down);
+            document.getElementById('FVexisting_display').innerHTML=numberWithCommas(FVexisting);
+            document.getElementById('SIP_display').innerHTML=numberWithCommas(SIP);
+            document.getElementById('Dpercent').innerHTML=Percentage;
+            
+            drawChart(FV, FVexisting)
+
+        }
+
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(function () {
+            drawChart(FV, FVexisting);
+        });
+        function drawChart(FV, FVexisting) {
+            console.log(FV, FVexisting);
+
+
+            var numberschart;
+            numberschart = Number(FV);
+            /*var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Shortfall', parseInt(numberschart)],
+                ['Provision Made', parseInt(FVexisting)],
+            ]);
+
+            var options = {
+                title: 'Dream Car',
+                pieHole: 0.4,
+                slices: {
+                    0: { color: '#2199c7' }, // Color for Shortfall
+                    1: { color: '#ee141f' }, // Color for Provision
+                },
+                pieSliceText: 'percentage',
+                tooltip: {
+                text: 'value'
+                },
+                chartArea: {
+                    width: '100%',
+                    height: '94%'
+                },
+                legend: {
+                    textStyle: {
+                        fontSize: 13
+                    }
+                }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);*/
+
+            var data = [
+                ['Shortfall', parseInt(numberschart)],
+                ['Provision Made', parseInt(FVexisting)]
+            ];
+
+            Highcharts.chart('piechart', {
+                chart: {
+                    type: 'pie',
+                    backgroundColor: 'rgba(154, 206, 235, 0.01)'
+                },
+                title: {
+                    text: ''
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: '80%', // Make it a donut chart
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    },
+                    /*series: {
+                        borderWidth: 0,
+                        colorByPoint: true,
+                        type: 'pie',
+                        size: '80%',
+                        innerSize: '80%',
+                        dataLabels: {
+                            enabled: true,
+                            crop: false,
+                            distance: '-10%',
+                            style: {
+                                fontWeight: 'bold',
+                                fontSize: '10px'
+                            },
+                            connectorWidth: 0
+                        }
+                    }*/
+                },
+                colors: ['#ff6984', '#56e8cb'],
+                series: [{
+                    name: 'Value',
+                    colorByPoint: true,
+                    data: data
+                }],
+                // Disable the context menu
+                exporting: {
+                    enabled: false
+                },
+                // Disable the Highcharts.com link
+                credits: {
+                    enabled: false
+                }
+            });
+        }
+
+        function Nextpage() {
+            if (document.getElementById('hide2').style.display == 'none') {
+                document.getElementById('hide2').style.display = 'block';
+                /*document.getElementById('tab3').className='off1';*/
+                document.getElementById('tab1').className = 'off1';
+                document.getElementById('tab2').className = 'on1';
+                document.getElementById('tab4').className = 'off1';
+            }
+
+            if (document.getElementById('hide').style.display == 'block') {
+
+                document.getElementById('hide').style.display = 'none';
+            }
+        }
+
+        function Nextpage2() {
+            if (document.getElementById('benefits').style.display == 'none') {
+                document.getElementById('benefits').style.display = 'block';
+                document.getElementById('tab4').className = 'on1';
+                document.getElementById('tab1').className = 'off1';
+                document.getElementById('tab2').className = 'off1';
+                /*document.getElementById('tab3').className='off1';*/
+            }
+
+            if (document.getElementById('hide2').style.display == 'block') {
+                document.getElementById('hide2').style.display = 'none';
+            }
+        }
+
+        function backpage() {
+            if (document.getElementById('hide').style.display == 'none') {
+                document.getElementById('hide').style.display = 'block';
+            }
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+
+        function backpage2() {
+            if (document.getElementById('hide2').style.display == 'none') {
+                document.getElementById('hide2').style.display = 'block';
+            }
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+        function backpage33() {
+            if (document.getElementById('benefits').style.display == 'block') {
+                document.getElementById('benefits').style.display = 'none';
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12" align="center" style="padding: 10px; font-size: 18px;">
+            <img src="../img/colorcar-loan.svg" alt="fb-logo" class="clor-icon"> Car Loan Calculator
+        </div>
+    </div>
+    <div id="printDiv" class="row nomargin calcBg">
+        <div class="col-md-6 col-sm-6 col-xs-12 nopadding" style="background-color: #ffffff; padding-right: 0; padding-right: 0; border-right: 1px solid rgba(36, 154, 200, 1);">
+            <div id="hide" style="display:block;">
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">After how many years do you see yourself driving your dream car
+                            ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Years" value="3" min="1" max="30" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">How much does your dream car cost today ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Cost" value="3000000" min="1000000" max="50000000"
+                            step="1000000" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">What percentage of this cost would you like to go for a car loan
+                            ?</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="Percentage" value="20" min="0" max="100" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">How much money can you set aside for your dream car at the moment
+                            ?</label>
+                        <!-- <label id="calulator_name" visible="false">Dream Car</label> -->
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="PV" value="100000" min="0" max="3000000"
+                            step="100000" data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">Inflation Rate</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="inflation" value="7" min="0" max="20" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="col-md-12 col-sm-12 col-xs-12 bar_padding">
+                        <label for="slider-fill">Rate Of Return</label>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                        <input type="range" name="slider-fill" id="ror" value="9" min="0" max="60" step="1"
+                            data-highlight="true" onchange="Calculate()">
+                    </div>
+                </div>
+                <!-- <div class="clearfix"></div>
+
+                <div class="col-md-12 nopadding resp_1080">
+                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 resp_600 res_480_cal_hou">
+                        <input type='submit' value='Calculate' class='form_button' onclick="Calculate()">
+                    </div>
+                </div> -->
+
+                <!-- <div class="button" onclick="backpage()">Back</div> -->
+                <!--<div class="button" onclick="Nextpage2()">Next</div>-->
+
+                <span id='phpfmg_processing' style='display:none;'>
+                    <img id='phpfmg_processing_gif' src='admin1500.gif?mod=image&amp;func=processing' border=0
+                        alt='Processing...'> <label id='phpfmg_processing_dots'></label>
+                </span>
+            </div>
+
+            <div id="hide2" class="col-md-9 col-xs-12" style="display:none;">
+                <div class="col-md-12">
+                    <!-- <div class="button col-md-6" onclick="backpage()">Back</div> -->
+                    <!--<div class="button" onclick="Nextpage2()">Next</div>-->
+
+                    <span id='phpfmg_processing' style='display:none;'>
+                        <img id='phpfmg_processing_gif' src='admin1500.gif?mod=image&amp;func=processing' border=0
+                            alt='Processing...'> <label id='phpfmg_processing_dots'></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 nopadding calcChartDiv">
+            <div id="benefits" style="display:block;">
+                <div class="row nomargin">
+                    <div class="col-md-12 result_bar">
+                        <div class="col-md-12 col-sm-12 col-xs-12 nopadding resp_480_result">
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Cost In Future terms : </label>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="Cost_display"></span>
+                                </div>
+                            </div>
+                            <hr color="#C1C1C1" />
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Existing Investment:</label>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="FVexisting_display"></span>
+                                </div>
+                            </div>
+                            <hr color="#C1C1C1" />
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Car Loan Funding (<span id="Dpercent"></span><span id="inflation_display"></span> %) :</label>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="down_display"></span>
+                                </div>
+                            </div>
+                            <hr color="#C1C1C1" />
+                            <div class="row nomargin">
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding">
+                                    <label>Monthly Savings From Today :</label>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 nopadding resultText">
+                                    &#8377; <span id="SIP_display"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 nopadding pie_resp_600">
+                            <div id="piechart" class="piechart"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="clearfix"></div>
+                <div class="col-md-12 nopadding">
+                    <div class="button result_back_btn res_480_back_btn" onclick="backpage()">Back</div>
+                </div> -->
+                </div>
+                <!-- <div class="row nomargin">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6" align="right" style="padding: 0 25px 10px 0">
+                        <a onclick="window.location.reload()">Reset Calculator</a>
+                    </div>                    
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", Calculate);
+    </script>
+    <script src="formjs.js" type="text/javascript"></script>
+</body>
+
+</html>
