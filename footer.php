@@ -35,7 +35,7 @@
         <span class="policy_terms">
           <!-- <a href="#">Privacy policy</a>
           <a href="#">Terms & condition</a> -->
-          Designed and Powered by <a class="ps_link" href="https://propelsoft.in/" target="_blank">Propelsoft</a>
+          <a class="ps_link" href="https://propelsoft.in/" target="_blank">Designed and Powered by Propelsoft</a>
         </span>
       </div>
     </div>

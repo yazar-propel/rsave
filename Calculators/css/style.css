@@ -57,3 +57,24 @@
 .highcharts-container {
     height: 350px !important; /* Adjust the height as needed */
 }
+
+.dot-sf {
+    height: 15px;
+    width: 15px;
+    background-color: #ff6984;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-pm {
+    height: 15px;
+    width: 15px;
+    background-color: #56e8cb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.chartLegend {
+    text-align: center;
+    padding: 10px;
+}
