@@ -14,12 +14,12 @@ for (var i = 1; i <= images; i++) {
 const imagesNames = ["Budgeting","Expense Analysing","Purchase Power","Investment","Happiness","Peacefulness"];
 
 const textContent = [
-    "<h3>Budgeting</h3><p>Budgeting Content Needed</p>",
-    "<h3>Expense Analysing</h3><p>Expense Analysing Content Needed</p>",
-    "<h3>Purchase Power</h3><p>Purchase Power Content Needed</p>.",
-    "<h3>Investment</h3><p>Investment Content Needed</p>",
-    "<h3>Happiness</h3><p>Happiness Content Needed</p>",
-    "<h3>Peacefulness</h3><p>Peacefulness Content Needed</p>"
+    "<h3>Budgeting</h3><ol><li>Identify Purchasing Power</li><li>Identify Character</li><li>Where your money goes?</li><li>Give you control</li></ol>",
+    "<h3>Expense Analysing</h3><b>How to control the expenses?</b><ol><li>Fixed</li><li>Variable</li><li>Discretionary expenses</li></ol>",
+    "<h3>Purchase Power</h3><ul><li>Salary - expenses = Surplus is called purchasing power.</li><li>Reduced EMI Pardon</li><li>Create Rsave Formula.</li></ul>",
+    "<h3>Investment</h3><ul><li>Time value of money</li><li>Cost of the goals</li><li>Risk - Return Analysis</li><li>Focus on compounded annual Growth Rate.</li></ul>",
+    "<h3>Happiness</h3><ul><li>Right time get Right Amount.</li><li>Debt Free</li><li>ROH -Return on Happiness</li></ul>",
+    "<h3>Peacefulness</h3><ul><li>Stability Security in Finance</li><li>Increase Networth</li><li>Peace of Mind</li></ul>"
 ];
 
 var selected = 0;

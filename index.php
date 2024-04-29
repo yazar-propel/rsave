@@ -34,7 +34,12 @@ include("header.php"); ?>
         </div>
         <div class="col-md-4" style="text-align: justify" id="change_text">
             <h3>Budgeting</h3>
-            <p>Budgeting Content Needed</p>
+            <ol>
+                <li>Identify Purchasing Power</li>
+                <li>Identify Character</li>
+                <li>Where your money goes?</li>
+                <li>Give you control</li>
+            </ol>
         </div>
     </div>
 </div>
@@ -216,6 +221,28 @@ include("header.php"); ?>
                 <div class="exp-text">NRI Desk</div></a>
             </div>
         </div>
+    </div>
+</div>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="mis-vis bt-red">
+                <img src="img/target.png" alt="mission">
+                <h3>Mission</h3>
+                To impart financial responsibility for our clients by offering variety of financial products & services based on their needs.
+            </div>
+            <br>
+        </div>
+        <div class="col-md-4">
+            <div class="mis-vis bt-blue">
+                <img src="img/idea.png" alt="vision">
+                <h3>Vision</h3>
+                To offer a rich debit-free, wealthy environment for a prosperous financially independent Lifestyle with our financial solution.
+            </div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 <br/>
