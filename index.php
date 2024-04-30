@@ -178,7 +178,7 @@ include("header.php"); ?>
         </div>
         <div class="col-md-2 col-sm-4">
             <div class="exp-resp">
-                <a href="offerings.php?path=54EC%20Bonds"><img src="img/54ECbonds.png" alt="Business Finance Management"><br/>
+                <a href="offerings.php?path=Business%20Finance%20Management"><img src="img/54ECbonds.png" alt="Business Finance Management"><br/>
                 <div class="exp-text">Business Finance Management</div></a>
             </div>
         </div>
