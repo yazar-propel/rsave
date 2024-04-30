@@ -18,18 +18,18 @@ include("header.php"); ?>
                     <center><h3>Risk Management Matrix</h3></center>
                     <div class="row">
                         <div class="col-md-6 padd-right-0">
-                            <div class="blue-matrix"><h1>Risk Reduce</h1></div>
+                            <div class="green-matrix"><h1>Risk Retain</h1></div>
                         </div>
                         <div class="col-md-6 padd-right-0">
-                            <div class="red-matrix"><h1>Risk Avoid</h1></div>
+                            <div class="blue-matrix"><h1>Risk Reduce</h1></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 padd-right-0">
-                            <div class="green-matrix"><h1>Risk Retain</h1></div>
+                            <div class="yellow-matrix"><h1>Risk Transfer</h1></div>
                         </div>
                         <div class="col-md-6 padd-right-0">
-                            <div class="yellow-matrix"><h1>Risk Transfer</h1></div>
+                            <div class="red-matrix"><h1>Risk Avoid</h1></div>
                         </div>
                     </div>
                 </div>

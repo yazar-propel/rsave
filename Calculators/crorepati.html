@@ -20,12 +20,21 @@
             var convertmonthly;
             convertmonthly = Number(Returnn / 12);
             var Return = Number(convertmonthly / 100);
-            var Power = Math.pow((1 + Return), -Years * 12);
-            var RHS;
-            RHS = [(1 - Number(Power))] / Number(Return);
+            
+            const payment = pmt(Return, Years, PV, 0, 0);
+            const Total = payment.toFixed(2);
 
-            Total = Math.round(Number(PV) / Number(RHS));
             document.getElementById('v1-five').innerHTML = numberWithCommas(Total);
+        }
+
+        function pmt(rate, nper, pv, fv = 0, type = 0) {
+            console.log(rate, nper, pv, fv, type);
+            if (rate === 0) {
+                return -(pv + fv) / nper;
+            }
+            const pvif = Math.pow(1 + rate, nper);
+            const pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+            return pmt;
         }
 
         function defaultpage() {

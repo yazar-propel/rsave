@@ -1370,33 +1370,41 @@ ol, ul {
 .blue-matrix {
   /* width: 250px; */
   height: 200px;
-  color: var(--wht-fn-color);
-  background: #5680DB;
+  color: #5680DB;
+  border: 2px solid #5680DB;
   padding: 10px;
+  align-content: center;
+  text-align: center;
 }
 
 .red-matrix {
   /* width: 250px; */
   height: 200px;
-  color: var(--wht-fn-color);
-  background: #EF6B6C;
+  color: #EF6B6C;
+  border: 2px solid #EF6B6C;
   padding: 10px;
+  align-content: center;
+  text-align: center;
 }
 
 .green-matrix {
   /* width: 250px; */
   height: 200px;
-  color: var(--wht-fn-color);
-  background: #78B399;
+  color: #78B399;
+  border: 2px solid #78B399;
   padding: 10px;
+  align-content: center;
+  text-align: center;
 }
 
 .yellow-matrix {
   /* width: 250px; */
   height: 200px;
-  color: var(--wht-fn-color);
-  background: #FDB5A2;
+  color: #FDB5A2;
+  border: 2px solid #FDB5A2;
   padding: 10px;
+  align-content: center;
+  text-align: center;
 }
 
 .padd-right-0 {
