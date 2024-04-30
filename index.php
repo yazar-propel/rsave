@@ -228,8 +228,8 @@ include("header.php"); ?>
             <div class="panel bt-blue">
                 <div class="panel-heading"><center>Vision</center></div>
                 <div class="panel-body">
-                <img src="img/vision.png" alt="vision">
-                    <br/><br/>
+                <center><img src="img/vision.png" alt="vision"></center>
+                    <br/>
                     To offer a rich debit-free, wealthy environment for a prosperous financially independent Lifestyle with our financial solution.
                 </div>
             </div>
@@ -239,8 +239,8 @@ include("header.php"); ?>
             <div class="panel bt-red">
                 <div class="panel-heading"><center>Mission</center></div>
                 <div class="panel-body">
-                    <img src="img/target.png" alt="mission">
-                    <br/><br/>
+                    <center><img src="img/target.png" alt="mission"></center>
+                    <br/>
                     To impart financial responsibility for our clients by offering variety of financial products & services based on their needs.
                 </div>
             </div>

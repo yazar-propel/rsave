@@ -1358,9 +1358,9 @@ ol, ul {
   color: var(--wht-fn-color);
 }
 
-.panel-body {
+/* .panel-body {
   text-align: center;
-}
+} */
 
 .panel-body img {
   width: 50px;
