@@ -15,7 +15,7 @@ include("header.php"); ?>
     </div>
 </section>
 <!-- end page title -->
-<section id="content" class="container-fluid clearfix" style="min-height: 50px; margin-top: 75px;">
+<section id="content" class="container-fluid clearfix" style="min-height: 50px; margin-top: 60px;">
     <!-- begin our company -->
     <section> 
         <div class="col-md-2 cal-links-div">

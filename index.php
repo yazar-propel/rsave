@@ -1,9 +1,6 @@
 <?php 
 $act_menu = "home";
 include("header.php"); ?>
-<style>
-    
-</style>
 <div class="gradient">
     <!-- <div class="auto-type">Earn | Protect | Spend</div> -->
     <div class="container-fluid at-container">
@@ -181,8 +178,8 @@ include("header.php"); ?>
         </div>
         <div class="col-md-2 col-sm-4">
             <div class="exp-resp">
-                <a href="offerings.php?path=54EC%20Bonds"><img src="img/54ECbonds.png" alt="54EC Bonds"><br/>
-                <div class="exp-text">54EC Bonds</div></a>
+                <a href="offerings.php?path=54EC%20Bonds"><img src="img/54ECbonds.png" alt="Business Finance Management"><br/>
+                <div class="exp-text">Business Finance Management</div></a>
             </div>
         </div>
         <div class="col-md-2 col-sm-4">
@@ -226,23 +223,30 @@ include("header.php"); ?>
 <br/>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <div class="mis-vis bt-red">
-                <img src="img/target.png" alt="mission">
-                <h3>Mission</h3>
-                To impart financial responsibility for our clients by offering variety of financial products & services based on their needs.
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div class="panel bt-blue">
+                <div class="panel-heading"><center>Vision</center></div>
+                <div class="panel-body">
+                <img src="img/vision.png" alt="vision">
+                    <br/><br/>
+                    To offer a rich debit-free, wealthy environment for a prosperous financially independent Lifestyle with our financial solution.
+                </div>
             </div>
             <br>
         </div>
-        <div class="col-md-4">
-            <div class="mis-vis bt-blue">
-                <img src="img/idea.png" alt="vision">
-                <h3>Vision</h3>
-                To offer a rich debit-free, wealthy environment for a prosperous financially independent Lifestyle with our financial solution.
+        <div class="col-md-3">
+            <div class="panel bt-red">
+                <div class="panel-heading"><center>Mission</center></div>
+                <div class="panel-body">
+                    <img src="img/target.png" alt="mission">
+                    <br/><br/>
+                    To impart financial responsibility for our clients by offering variety of financial products & services based on their needs.
+                </div>
             </div>
+            <br>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 <br/>

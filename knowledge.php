@@ -1,11 +1,6 @@
 <?php
 $act_menu = "knowledge";
 include("header.php"); ?>
-<style>
-    footer{
-        position: absolute;
-    }
-</style>
 <div class="container-fluid clearfix" style="padding-top: 70px;">
     <div class="row">
         <div class="col-lg-2 hidden-xs kbLinks">

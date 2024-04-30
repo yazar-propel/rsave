@@ -1,11 +1,6 @@
 <?php 
 $act_menu = "about";
 include("header.php"); ?>
-<style>
-    footer{
-        position: absolute;
-    }
-</style>
 <!-- begin content -->
 <div class="container-fluid" style="min-height: 50px; margin-top: 90px; text-align:justify">
     <div class="row align-items-center">

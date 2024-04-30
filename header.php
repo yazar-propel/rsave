@@ -19,7 +19,7 @@
     <nav id="navMenu">
         <div class="navbar">
             <i class="fa fa-bars" aria-hidden="true"></i>
-            <div class="logo"><a href="index.php"><img src="img/logo.png" style="height: 70px" alt="Rsave"></a></div>
+            <div class="logo"><a href="index.php"><img src="img/logo.png" style="height: 60px" alt="Rsave"></a></div>
             <div class="nav-links-container">
                 <div class="nav-links">
                     <div class="sidebar-logo">
@@ -54,14 +54,6 @@
                                     </ul>
                                 </li>
                                 <li class="more">
-                                    <span><a href="#">Bonds</a>
-                                        <i class="fa fa-chevron-right arrow more-arrow" aria-hidden="true"></i>
-                                    </span>
-                                    <ul class="more-sub-menu sub-menu">
-                                        <li><a href="offerings.php?path=54EC%20Bonds">54EC Bonds</a></li>
-                                    </ul>
-                                </li>
-                                <li class="more">
                                     <span><a href="#">Advices</a>
                                         <i class="fa fa-chevron-right arrow more-arrow" aria-hidden="true"></i>
                                     </span>
@@ -70,6 +62,7 @@
                                         <li><a href="offerings.php?path=Loan%20Advice">Loans Advice</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="offerings.php?path=Business%20Finance%20Management">Business Finance Management</a></li>
                                 <li><a href="offerings.php?path=Tax%20Planning">Tax Planning</a></li>
                                 <li><a href="offerings.php?path=Wealth%20Management">Wealth Management</a></li>
                                 <li><a href="offerings.php?path=Financial%20Planning">Financial Planning</a></li>

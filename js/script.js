@@ -98,3 +98,14 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
   kb_content.scrollTop = 0;
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  const bodyHeight = document.body.clientHeight;
+  const windowHeight = window.innerHeight;
+  const footer = document.querySelector('footer');
+  if (bodyHeight < windowHeight) {
+      footer.style.position = 'absolute';
+  } else {
+      footer.style.position = 'relative';
+  }
+});

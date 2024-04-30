@@ -7,13 +7,8 @@ if(isset($_GET['path']))
 
 $act_menu = "offerings";
 include("header.php"); ?>
-<style>
-    footer{
-        position: absolute;
-    }
-</style>
-<div class="container-fluid clearfix" style="min-height: 50px; margin-top: 75px;">
-    <h1><?=strtoupper(str_replace("%20", " ", $url_link));?></h1>
+<div class="container-fluid clearfix" style="min-height: 50px; margin-top: 60px;">
+    <h2><?=strtoupper(str_replace("%20", " ", $url_link));?></h2>
     <?php 
     if(($url_link == "Life Insurance") || ($url_link == "General Insurance") || ($url_link == "Health Insurance")){
         echo '<div class="container-fluid">
@@ -22,19 +17,19 @@ include("header.php"); ?>
                 <div class="col-md-6">
                     <center><h3>Risk Management Matrix</h3></center>
                     <div class="row">
-                        <div class="col-md-6 blue-matrix">
-                            <h1>Risk Reduce</h1>
+                        <div class="col-md-6 padd-right-0">
+                            <div class="blue-matrix"><h1>Risk Reduce</h1></div>
                         </div>
-                        <div class="col-md-6 red-matrix">
-                            <h1>Risk Avoid</h1>
+                        <div class="col-md-6 padd-right-0">
+                            <div class="red-matrix"><h1>Risk Avoid</h1></div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 green-matrix">
-                            <h1>Risk Retain</h1>
+                        <div class="col-md-6 padd-right-0">
+                            <div class="green-matrix"><h1>Risk Retain</h1></div>
                         </div>
-                        <div class="col-md-6 yellow-matrix">
-                            <h1>Risk Transfer</h1>
+                        <div class="col-md-6 padd-right-0">
+                            <div class="yellow-matrix"><h1>Risk Transfer</h1></div>
                         </div>
                     </div>
                 </div>
@@ -45,53 +40,102 @@ include("header.php"); ?>
                     <a href="https://api.whatsapp.com/send?phone=9444425260&amp;text=Query%20Regarding%20Mutual%20Fund" target="_blank">Know More</a>
                 </div>
             </div>
+            <br/>
         </div>';
     } else if($url_link == "Mutual Fund") {
         echo '<div class="container-fluid">
+            <div class="chart-row">
+                <div class="chart-pill chart-col">
+                    <h3>Capital Needs</h3>
+                    <div class="chart-rect brown">Education Corpus</div>
+                    <div class="chart-rect green">Retirement Corpus</div>
+                    <div class="chart-rect yellow">Marriage Corpus</div>
+                    <div class="chart-rect violet">Real Estate Corpus</div>
+                </div>
+                <div class="chart-line-h"></div>
+                <div class="chart-pill-fit chart-col">
+                    <div style="margin: auto; font-size: 25px">Asset Allocation</div>
+                </div>
+                <div class="chart-line-h"></div>
+                <div class="chart-pill chart-col">
+                    <h3>Portfolio Management</h3>
+                    <div class="chart-rect dark-green">Bonds & Deposits</div>
+                    <div class="chart-rect dark-yellow">Sovereign Gold Bond</div>
+                    <div class="chart-rect dark-blue">Mutual Fund</div>
+                    <div class="chart-rect dark-red">Shares</div>
+                </div>
+            </div><br/>
             <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h3>Pro&#39;s</h3>
-                    <ol>
-                    <li>High Liquidity</li>
-                    <li>Professional in Management</li>
-                    <li>Risk Return</li>
-                    <li>Divertication</li>
-                    </ol>
+                    <div class="chart-row">
+                        <div class="chart-pill chart-col">
+                            <h3>Pro&#39;s</h3>
+                            High Liquidity<br/>
+                            Professional in Management<br/>
+                            Risk Return<br/>
+                            Divertication
+                        </div>
+                        <div class="chart-line-h"></div>
+                        <div class="chart-pill chart-col">
+                            <h3>Con&#39;s</h3>
+                            Principal Risk<br/>
+                            Volatile<br/>
+                            Subject to Tax Payables
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Con&#39;s</h3>
-                    <ol>
-                    <li>Principal Risk</li>
-                    <li>Volatile</li>
-                    <li>Subject to Tax Payables</li>
-                    </ol>
-                </div>
-            </div>
+                <div class="col-md-3"></div>
+            </div><br/><br/>
             <div class="row">
                 <div class="col-md-12">
                     <a href="https://api.whatsapp.com/send?phone=9444425260&amp;text=Query%20Regarding%20Mutual%20Fund" target="_blank">Know More</a>
                 </div>
-            </div>
+            </div><br/><br/>
         </div>';
     } else if($url_link == "Equity") {
         echo '<div class="container-fluid">
+            <div class="chart-row">
+                <div class="chart-pill chart-col">
+                    <h3>Capital Needs</h3>
+                    <div class="chart-rect brown">Education Corpus</div>
+                    <div class="chart-rect green">Retirement Corpus</div>
+                    <div class="chart-rect yellow">Marriage Corpus</div>
+                    <div class="chart-rect violet">Real Estate Corpus</div>
+                </div>
+                <div class="chart-line-h"></div>
+                <div class="chart-pill-fit chart-col">
+                    <div style="margin: auto; font-size: 25px">Asset Allocation</div>
+                </div>
+                <div class="chart-line-h"></div>
+                <div class="chart-pill chart-col">
+                    <h3>Portfolio Management</h3>
+                    <div class="chart-rect dark-green">Bonds & Deposits</div>
+                    <div class="chart-rect dark-yellow">Sovereign Gold Bond</div>
+                    <div class="chart-rect dark-blue">Mutual Fund</div>
+                    <div class="chart-rect dark-red">Shares</div>
+                </div>
+            </div><br/>
             <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h3>Pro&#39;s</h3>
-                    <ol>
-                    <li>Self Management</li>
-                    <li>High Return</li>
-                    <li>High Liquidity</li>
-                    </ol>
+                    <div class="chart-row">
+                        <div class="chart-pill chart-col">
+                            <h3>Pro&#39;s</h3>
+                            Self Management<br/>
+                            High Return<br/>
+                            High Liquidity
+                        </div>
+                        <div class="chart-line-h"></div>
+                        <div class="chart-pill chart-col">
+                            <h3>Con&#39;s</h3>
+                            High Risk<br/>
+                            High Volatile<br/>
+                            Rare Capital Loss
+                        </div>
+                    </div>  
                 </div>
-                <div class="col-md-6">
-                    <h3>Con&#39;s</h3>
-                    <ol>
-                    <li>High Risk</li>
-                    <li>High Volatile</li>
-                    <li>Rare Capital Loss</li>
-                    </ol>
-                </div>
+                <div class="col-md-3"></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -120,11 +164,9 @@ include("header.php"); ?>
         echo '<div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Quote</h4>
-                    <ol>
-                    <li>Live your today</li>
-                    <li>Plan your tomorrow</li>
-                    </ol>
+                    <h3>&lsquo;Live your today&rsquo;</h3>
+                    <h3>&lsquo;Plan your tomorrow&rsquo;</h3>
+                    <br/>
                     <h4>What is the improtance of financial planning?</h4>
                     <p>
                         Whether you need help navigate your financial to reality today or Preparing to reach long term goals, a certified financial planner professional is there to help. Because even when life is uncertain, you are in control of your financial future.
@@ -140,20 +182,23 @@ include("header.php"); ?>
     } else if($url_link == "Loan Advice") {
         echo '<div class="container-fluid">
             <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h3>Steps to follow</h3>
-                    <ol>
-                    <li>Choose the right loan amount for your financial needs</li>
-                    <li>Best Borrowing Rate</li>
-                    <li>Right term and repaying capacity</li>
-                    </ol>
+                    <div class="chart-row">
+                        <div class="chart-pill chart-col">
+                            <h3>Steps to follow</h3>
+                            Choose the right loan amount for your financial needs<br/>
+                            Best Borrowing Rate<br/>
+                            Right term and repaying capacity
+                        </div>
+                        <div class="chart-line-h"></div>
+                        <div class="chart-pill chart-col">
+                            <h3>Benefits</h3>
+                            More Purchasing Power
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Benefits</h3>
-                    <ol>
-                    <li>More Purchasing Power</li>
-                    </ol>
-                </div>
+                <div class="col-md-3"></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -164,24 +209,27 @@ include("header.php"); ?>
     } else if($url_link == "Deposit Advice") {
         echo '<div class="container-fluid">
             <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h3>Steps to follow</h3>
-                    <ol>
-                    <li>Interest Rate Risk</li>
-                    <li>Default Risk</li>
-                    <li>Liquidity Risk</li>
-                    <li>Re investment Risk</li>
-                    <li>Tax payable Risk</li>
-                    </ol>
+                    <div class="chart-row">
+                        <div class="chart-pill chart-col">
+                            <h3>Steps to follow</h3>
+                            Interest Rate Risk<br/>
+                            Default Risk<br/>
+                            Liquidity Risk<br/>
+                            Re investment Risk<br/>
+                            Tax payable Risk
+                        </div>
+                        <div class="chart-line-h"></div>
+                        <div class="chart-pill chart-col">
+                            <h3>Benefits</h3>
+                            Safety<br/>
+                            Liquidity<br/>
+                            Returns
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Benefits</h3>
-                    <ol>
-                    <li>Safety</li>
-                    <li>Liquidity</li>
-                    <li>Returns</li>
-                    </ol>
-                </div>
+                <div class="col-md-3"></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -193,21 +241,46 @@ include("header.php"); ?>
         echo '<div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <ol>
-                    <li>Why NRI should invest in India
+                    <h4>Why NRI should invest in India</h4>
+                    <p>
                         <ul>
                             <li>Dollar Vs. Rupee Benefits</li>
                             <li>Better ROI</li>
                             <li>Less Tax Payable</li>
                             <li>Best Investment option for NRI in india</li>
                         </ul>
-                    </li>
-                    </ol>
+                    </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <a href="https://api.whatsapp.com/send?phone=9444425260&amp;text=Query%20Regarding%20NRI%20Desk" target="_blank">Know More</a>
+                </div>
+            </div>
+        </div>';
+    } else if($url_link == "Business Finance Management") {
+        echo '<div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="img/bfm.jpg" alt="" style="width: auto; height: 500px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="https://api.whatsapp.com/send?phone=9444425260&amp;text=Query%20Regarding%20Business%20Finance%20Management" target="_blank">Know More</a>
+                </div>
+            </div>
+        </div>';
+    } else if($url_link == "Wealth Management") {
+        echo '<div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="img/wm.jpg" alt="" style="width: auto; height: 500px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="https://api.whatsapp.com/send?phone=9444425260&amp;text=Query%20Regarding%20Wealth%20Management" target="_blank">Know More</a>
                 </div>
             </div>
         </div>';
