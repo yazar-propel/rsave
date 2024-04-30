@@ -29,7 +29,8 @@ include("header.php"); ?>
                     <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp; Address
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-8">
-                    : No 1, J S Complex, Melavaladi
+                    <b>H.O :</b> No. 1, J S Complex, Melavaladi, Trichy - 621218<br/>
+                    <b>B.O :</b> No. 62, First Floor, Thiruvalluvar St, Sanjeevi Nagar, Trichy - 620002
                 </div>
             </div>
             <div class="row">
