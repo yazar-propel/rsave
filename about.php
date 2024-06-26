@@ -17,7 +17,7 @@ include("header.php"); ?>
 <div class="container-fluid aboutFooter">
     <div class="row align-items-center">
         <div class="col-md-5" style="text-align: justify;">
-            <img src="img/logo.png" style="height: 70px" alt="Rsave"><br>
+            <img src="img/logo.png" style="height: 70px" alt="Rsave"> Funds Mart<br>
             We are AMFI registered financial Distributor of Mutual Funds and other Financial Products, with vast experiences in financial industry and serving a large number of happy investors.We offer the complete range of financial products and insurance in a single platform and We help and guide you to choose the right financial products to help achieve your financial goals successfully.<br>
             Our comprehensive online smart wealth management platform empowers you to have access to your entire wealth portfolio across Mutual Funds, Direct Equity, Fixed Deposits, Insurance etc at a single place.
         </div>

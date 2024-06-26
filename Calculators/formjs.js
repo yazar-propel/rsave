@@ -452,3 +452,144 @@ fmgHandler.init();
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }  
+
+function calculateFutureCost(today, inflationRate, years) {
+    return today * Math.pow(1 + inflationRate, years);
+}
+
+function nominal(rate, periodsPerYear) {
+    return periodsPerYear * (Math.pow(1 + rate, 1 / periodsPerYear) - 1);
+}
+
+function pmt(rate, nper, pv, fv, type) {
+    if (rate !== 0) {
+        return (rate * (pv * Math.pow(1 + rate, nper) + fv)) / ((1 + rate * type) * (Math.pow(1 + rate, nper) - 1));
+    } else {
+        return -(pv + fv) / nper;
+    }
+}
+
+/*function pmt(rate, nper, pv, fv = 0, type = 0) {
+    console.log(rate, nper, pv, fv, type);
+    if (rate === 0) {
+        return -(pv + fv) / nper;
+    }
+    const pvif = Math.pow(1 + rate, nper);
+    const pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+    return pmt;
+}*/
+
+function drawChart(FV, FVexisting, Text1, Text2) {
+
+    var numberschart;
+    numberschart = Number(FV);
+    
+    var data = [
+        [Text1, parseInt(numberschart)],
+        [Text2, parseInt(FVexisting)]
+    ];
+
+    Highcharts.chart('piechart', {
+        chart: {
+            type: 'pie',
+            backgroundColor: 'rgba(154, 206, 235, 0.01)'
+        },
+        title: {
+            text: ''
+        },
+        plotOptions: {
+            pie: {
+                innerSize: '80%', // Make it a donut chart
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            },
+            /*series: {
+                borderWidth: 0,
+                colorByPoint: true,
+                type: 'pie',
+                size: '80%',
+                innerSize: '80%',
+                dataLabels: {
+                    enabled: true,
+                    crop: false,
+                    distance: '-10%',
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '10px'
+                    },
+                    connectorWidth: 0
+                }
+            }*/
+        },
+        colors: ['#ff6984', '#56e8cb'],
+        series: [{
+            name: 'Value',
+            colorByPoint: true,
+            data: data
+        }],
+        // Disable the context menu
+        exporting: {
+            enabled: false
+        },
+        // Disable the Highcharts.com link
+        credits: {
+            enabled: false
+        }
+    });
+}
+
+function convertHTMLtoPDF() {
+    const { jsPDF } = window.jspdf;
+
+    //let doc = new jsPDF('l', 'mm', [1080, 720]);
+    //let doc = new jsPDF('l', 'pt', 'letter');
+    let doc = new jsPDF('l', 'pt', 'a3', false); /* Creates a new Document*/
+    doc.setFontSize(15); /* Define font size for the document */
+    let pdfjs = document.querySelector('#printDiv');
+
+    doc.html(pdfjs, {
+        callback: function (doc) {
+            //doc.save("newpdf.pdf");
+            var yAxis = 200;
+            var imageTags = $('#graph-images img');
+            for (var i = 0; i < imageTags.length; i++) {
+                if (i % 2 == 0 && i != 0) { /* I want only two images in a page */
+                    doc.addPage(); /* Adds a new page*/
+                    yAxis = 30; /* Re-initializes the value of yAxis for newly added page*/
+                }
+                var someText = 'Chart ' + (i + 1);
+                //doc.text(60, yAxis, someText); /* Add some text in the PDF */
+                yAxis = yAxis + 20; /* Update yAxis */
+                doc.addImage(imageTags[i], 'png', 600, yAxis, 450, 280, undefined, 'none');
+                yAxis = yAxis + 360; /* Update yAxis */
+            }
+
+            const d = new Date();
+            const pageSize = doc.internal.pageSize;
+            const pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
+            const pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
+            const headerL = 'RSave.in';
+            const headerR = 'Child\'s Education Planning';
+            const footerL = `PDF downloaded from rsave.in at: ${d}`;
+            const pageCount = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= pageCount; i++) {
+                doc.setPage(i);
+                const footerR = `Page ${i} of ${pageCount}`;
+                doc.addImage('../image/Companylogo.png', 'png', 40, 15, 50, 25, undefined, 'none');
+                //doc.text(headerL, 40, 15, { align: 'left', baseline: 'top' });
+                doc.text(headerR, pageWidth - 40, 15, { align: 'right', baseline: 'top' });
+                doc.text(footerL, 40, pageHeight - 25, { align: 'left', baseline: 'top' });
+                doc.text(footerR, pageWidth - 40, pageHeight - 25, { align: 'right', baseline: 'top' });
+                //doc.text(footerR, pageWidth / 2 - (doc.getTextWidth(footer) / 2), pageHeight - 15, { baseline: 'bottom' });
+            }
+            doc.save('Chart_Report' + '.pdf'); /* Prompts user to save file on his/her machine */
+        },
+        x: 12,
+        y: 30
+    });
+
+}

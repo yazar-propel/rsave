@@ -21,18 +21,9 @@
             var Return = Number(convertmonthly / 100);
             var Power = Math.pow((1 + Return), Years);
 
-            Total = Math.round(PV * Power);
+            Total = parseFloat((PV * Power).toFixed(2));
+            
             document.getElementById('v1-five').innerHTML = numberWithCommas(Total);
-        }
-
-        function defaultpage() {
-            if (document.getElementById('benefits').style.display == 'block') {
-                document.getElementById('benefits').style.display = 'none';
-            }
-
-            if (document.getElementById('hide').style.display == 'none') {
-                document.getElementById('hide').style.display = 'block';
-            }
         }
     </script>
 </head>
@@ -73,12 +64,6 @@
                             data-highlight="true" onchange="Calculate()">
                     </div>
                 </div>
-                <!-- <div class="col-md-12 nopadding">
-                    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
-                        <div class="button" onclick="Calculate()">Calculate</div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-6"></div>
-                </div> -->
             </div>
         </div>
 
@@ -98,10 +83,6 @@
                             <hr color="#C1C1C1" />
                         </div>
                     </div>
-                    <!-- <div class="clearfix"></div>
-                <div class="col-md-12 nopadding">
-                    <div class="button" onclick="defaultpage()">Back</div>
-                </div> -->
                 </div>
                 <!-- <div class="row nomargin">
                     <div class="col-md-6"></div>
