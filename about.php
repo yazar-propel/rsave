@@ -4,12 +4,15 @@ include("header.php"); ?>
 <!-- begin content -->
 <div class="container-fluid" style="min-height: 50px; margin-top: 90px; text-align:justify">
     <div class="row align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <p>Established in 2006, Our Organization offer financial services including Risk management, cash flow, Investment, Tax & GST Planning to all types of people. With a decade of experience behind us and more than 750 satisfied customer, We educate them to EARN, PROTECT and SPEND. We are closely associated with our clients and regularly monitor their financial growth, wealth generation, Asset creation and Estate Planning. </p>
         </div>
-        <div class="col-md-6" align="center">
-            <img style="width: 50%; object-fit: cover;" src="image/certificate1.png"/>
+        <div class="col-md-5" align="center">
+            <img style="width: 95%; height: auto; object-fit: cover;" src="image/certificate1.png"/>
             <p style="font-size:15px;"><a class="cl_link" href="image/N%20RAMACHANDRABABU%20B%20(1).pdf" target="_blank">KNOW MORE</a></p>
+        </div>
+        <div class="col-md-3" align="center">
+            <img style="width:100%; height: auto; object-fit: cover;" src="image/certificate2.jpg"/>
         </div>
     </div>
     
